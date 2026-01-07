@@ -1,7 +1,8 @@
 
 export default function Hero() {
     return (
-        <section className="relative min-h-screen flex flex-col justify-center items-center pt-20 pb-32 overflow-hidden bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 dark:from-indigo-900 dark:via-purple-900 dark:to-pink-900 rounded-b-[4rem] shadow-2xl z-10">
+        <section className="relative min-h-screen flex flex-col justify-center items-center pt-20 pb-32 overflow-hidden bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 rounded-b-[4rem] shadow-2xl z-10">
+        {/* <section className="relative min-h-screen flex flex-col justify-center items-center pt-20 pb-32 overflow-hidden bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 rounded-b-[4rem] shadow-2xl z-10"> */}
           <div className="absolute top-1/4 left-10 w-24 h-24 bg-yellow-300 rounded-full blur-xl opacity-40 animate-float"></div>
           <div className="absolute bottom-1/3 right-10 w-32 h-32 bg-cyan-300 rounded-full blur-xl opacity-40 animate-float-delayed"></div>
           
@@ -15,7 +16,7 @@ export default function Hero() {
             <p className="text-xl text-white/90 font-medium mb-10 max-w-xl mx-auto">
               The most fun way to interact anonymously. Ask questions, confess secrets, and get to know your squad.
             </p>
-            <button className="bg-white text-primary dark:bg-gray-900 dark:text-white text-xl font-bold px-10 py-4 rounded-full shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-300 flex items-center gap-2 mx-auto">
+            <button className="bg-white text-primary  text-xl font-bold px-10 py-4 rounded-full shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-300 flex items-center gap-2 mx-auto">
               Download the app!
               <span className="material-icons-round">download</span>
             </button>
