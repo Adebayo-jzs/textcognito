@@ -22,7 +22,7 @@ export default function TextcognitoLanding() {
   const shareLink = `${process.env.NEXT_PUBLIC_SITE_URL}/u/yourusername`
   return (
      
-    <div className="transition-colors duration-300 font-display">
+    <div className="transition-colors duration-300 font-display overflow-hidden min-h-screen">
       <section className="pt-20 pb-32 sticky top-0 z-0 bg-gradient-to-tr from-[#15121a]  via-[#141118] to-[#1c1425]  ">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="max-w-2xl">
