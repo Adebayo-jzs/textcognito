@@ -120,7 +120,10 @@ export default function TextcognitoLanding() {
 
       <section className="pt-20 pb-32 relative bg-[#121212]  px-6">
         <div className="text-white text-center mt-6 mb-16 max-w-2xl mx-auto">
-          <h2 className="text-2xl md:text-4xl font-bold mb-4 ">Why choose Textcognito?</h2>
+          <p className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#8f48ec]/10 border border-[#8f48ec]/20 text-[#8f48ec] text-xs font-semibold">
+            FEATURES
+          </p>
+          <h2 className="text-2xl md:text-4xl font-bold mb-4 mt-6 ">Why choose Textcognito?</h2>
           <p className="text-gray-400">Everything you need to receive and manage anonymous messages safely and easily.</p>
         </div>
         <div className="max-w-7xl mx-auto  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 text-white gap-6">
