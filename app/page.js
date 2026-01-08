@@ -5,19 +5,19 @@ import Hero from '@/components/sections/Hero';
 import React from 'react';
 import GetToKnow from '@/components/sections/get-to-know';
 import Footer from '@/components/Footer';
-import { Bolt, ContentCopy, Sms } from '@mui/icons-material';
-import { Link } from 'lucide-react';
+import { Bolt, ContentCopy, LinkOutlined, Security, ShareSharp, Sms } from '@mui/icons-material';
+import { ChartAreaIcon, Filter, Link, LinkIcon, Share, Share2, ShareIcon } from 'lucide-react';
 // If using Next.js, use: import Link from 'next/link';
 // If using Next.js, you might handle fonts in layout.js, but for now links are included below.
 
 export default function TextcognitoLanding() {
   const features = [
-    {id:1,title:"100% Anonymous",text:"Complete privacy guaranteed. We never reveal sender identities or store identifying information.",color: "text-indigo-400",Icon:Link},
-    {id:2,title:"Custom Link",text:"Get your personalized link like textcognito.com/yourname. Easy to remember and share!",color: "text-purple-400",Icon:Link},
-    {id:3,title:"Instant Delivery",text:"Receive messages instantly with real-time notifications. Never miss a message!",color: "text-red-400",Icon:Link},
-    {id:4,title:"Smart Filters",text:"Advanced spam detection and content filters keep your inbox clean and safe.",color: "text-blue-400",Icon:Link},
-    {id:5,title:"Easy Sharing",text:"Share your link on social media with one click. Works everywhere!",color: "text-green-400",Icon:Link},
-    {id:6,title:"Analytics",text:"Track views, messages received, and engagement stats in your dashboard.",color: "text-violet-400",Icon:Link},
+    {id:1,title:"100% Anonymous",text:"Complete privacy guaranteed. We never reveal sender identities or store identifying information.",color: "text-indigo-400",bg:"bg-indigo-500/10",Icon:Security},
+    {id:2,title:"Smart Filters",text:"Advanced spam detection and content filters keep your inbox clean and safe.",color: "text-blue-400", bg: "bg-blue-500/10", hover: "group-hover:bg-blue-500/20",Icon:Filter},
+    {id:3,title:"Easy Sharing",text:"Share your link on social media with one click. Works everywhere!",color: "text-green-400", bg: "bg-green-500/10", hover: "group-hover:bg-green-500/20",Icon:ShareSharp},
+    {id:4,title:"Instant Delivery",text:"Receive messages instantly with real-time notifications. Never miss a message!",color: "text-red-400",bg: "bg-red-500/10", hover: "group-hover:bg-red-500/20",Icon:Bolt},
+    {id:5,title:"Analytics",text:"Track views, messages received, and engagement stats in your dashboard.",color: "text-violet-400", bg: "bg-violet-500/10", hover: "group-hover:bg-violet-500/20",Icon:ChartAreaIcon},
+    {id:6,title:"Custom Link",text:"Get your personalized link like textcognito.com/yourname. Easy to remember and share!",color: "text-purple-400", bg: "bg-purple-500/10",hover: "group-hover:bg-purple-500/20",Icon:LinkIcon},
   ]
   return (
      
@@ -93,7 +93,7 @@ export default function TextcognitoLanding() {
                 <div className="space-y-4">
                   <div className="bg-[#8f48ec]/5 border border-[#8f48ec]/10 rounded-xl p-4">
                     <div className="flex items-center gap-2 mb-1 text-xs text-[#8f48ec] font-bold">
-                      <span className="material-symbols-outlined text-sm"><Sms fontSize='15'/></span>
+                      <span className="text-sm"><Sms fontSize='15'/></span>
                       New Message
                     </div>
                     <div className="text-gray-300 text-sm">
@@ -102,7 +102,7 @@ export default function TextcognitoLanding() {
                   </div>
                   <div className="bg-[#8c4aea]/5 border border-[#8c4aea]/10 rounded-xl p-4">
                     <div className="flex items-center gap-2 mb-1 text-xs text-[#8c4aea] font-bold">
-                      <span className="material-symbols-outlined text-sm"><Sms fontSize='15'/></span>
+                      <span className="text-sm"><Sms fontSize='15'/></span>
                       New Message
                     </div>
                     <div className="text-gray-300 text-sm">
@@ -118,15 +118,18 @@ export default function TextcognitoLanding() {
 
 
 
-      <section className="pt-20 pb-32 relative bg-[#121212]  ">
-        <div className="text-white text-center">
-          <h2 className="text-3xl md:text-4xl font-bold   mt-6 mb-4 ">Why choose Textcognito?</h2>
+      <section className="pt-20 pb-32 relative bg-[#121212]  px-6">
+        <div className="text-white text-center mt-6 mb-16 max-w-2xl mx-auto">
+          <h2 className="text-2xl md:text-4xl font-bold mb-4 ">Why choose Textcognito?</h2>
           <p className="text-gray-400">Everything you need to receive and manage anonymous messages safely and easily.</p>
         </div>
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 text-white gap-6">
+        <div className="max-w-7xl mx-auto  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 text-white gap-6">
           {features.map(feature => (
             <div key={feature.id} className="bg-[#1a1a1a] p-8 rounded-2xl border border-white/5 hover:border-[#8f48ec]/30 transition-colors group">
-              <feature.Icon/>
+              <div className={`${feature.bg} w-12 h-12 rounded-xl flex items-center justify-center mb-5 ${feature.hover}`}>
+                <feature.Icon className={`  ${feature.color} ${feature.hover}}`} />
+              </div>
+              <h2 className="text-xl   font-bold   mt-6 mb-4 ">{feature.title}</h2>
               <p>{feature.text}</p>
             </div>
           ))}
