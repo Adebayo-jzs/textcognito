@@ -19,12 +19,13 @@ export default function TextcognitoLanding() {
     {id:5,title:"Analytics",text:"Track views, messages received, and engagement stats in your dashboard.",color: "text-violet-400", bg: "bg-violet-500/10", hover: "group-hover:bg-violet-500/20",Icon:ChartAreaIcon},
     {id:6,title:"Custom Link",text:"Get your personalized link like textcognito.com/yourname. Easy to remember and share!",color: "text-purple-400", bg: "bg-purple-500/10",hover: "group-hover:bg-purple-500/20",Icon:LinkOutlined},
   ]
-  const cardSectionClass = "relative md:sticky md:top-0 min-h-screen flex flex-col justify-center overflow-hidden";
+  const cardSectionClass = "relative ";
+  // const cardSectionClass = "relative md:sticky md:top-0 min-h-screen flex flex-col justify-center overflow-hidden";
   const shareLink = `${process.env.NEXT_PUBLIC_SITE_URL}/u/yourusername`
   return (
      
-    <div className="transition-colors duration-300 font-display overflow-x-clip min-h-screen">
-      <section className="pt-20 pb-32 sticky top-0 z-0 bg-gradient-to-tr from-[#15121a]  via-[#141118] to-[#1c1425]  ">
+    <div className="transition-colors duration-300 font-display overflow-x-hidden min-h-screen">
+      <section className={`${cardSectionClass} pt-20 pb-32 bg-gradient-to-tr from-[#15121a]  via-[#141118] to-[#1c1425]  `}>
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="max-w-2xl">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#8f48ec]/10 border border-[#8f48ec]/20 text-[#8f48ec] text-xs font-semibold mb-8">
@@ -122,13 +123,34 @@ export default function TextcognitoLanding() {
 
 
 
-      <section className="py-20 relative z-10 bg-[#121212]  px-6">
+      <section className={`${cardSectionClass} py-20 relative z-10 bg-[#121212]  px-6`}>
         <div className="text-white text-center  mb-16 max-w-2xl mx-auto">
           <p className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#8f48ec]/10 border border-[#8f48ec]/20 text-[#8f48ec] text-xs font-semibold">
             FEATURES
           </p>
           <h2 className="text-2xl md:text-4xl font-bold mb-4 mt-6 ">Why choose Textcognito?</h2>
           <p className="text-gray-400">Everything you need to receive and manage anonymous messages safely and easily.</p>
+        </div>
+        <div className="max-w-7xl mx-auto  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 text-white gap-6">
+          {features.map(feature => (
+            <div key={feature.id} className="bg-[#1a1a1a] p-8 rounded-2xl border border-white/5 hover:border-[#8f48ec]/30 transition-colors group">
+              <div className={`${feature.bg} w-12 h-12 rounded-xl flex items-center justify-center mb-5 ${feature.hover}`}>
+                <feature.Icon className={`  ${feature.color} ${feature.hover}}`} />
+              </div>
+              <h2 className="text-xl   font-bold   mt-6 mb-4 ">{feature.title}</h2>
+              <p>{feature.text}</p>
+            </div>
+          ))}
+        </div>
+      </section> 
+
+      <section className={`${cardSectionClass} py-20 relative z-10 bg-[#0f0f0f]  px-6`}>
+        <div className="text-white text-center  mb-16 max-w-2xl mx-auto">
+          <p className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#8f48ec]/10 border border-[#8f48ec]/20 text-[#8f48ec] text-xs font-semibold">
+            HOW IT WORKS
+          </p>
+          <h2 className="text-2xl md:text-4xl font-bold mb-4 mt-6 ">Get Started in 3 simple steps</h2>
+          <p className="text-gray-400">Start receiving anonymous messages in under a minute.</p>
         </div>
         <div className="max-w-7xl mx-auto  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 text-white gap-6">
           {features.map(feature => (
