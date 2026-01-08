@@ -106,7 +106,7 @@ export default function TextcognitoLanding() {
                   <div className="bg-[#8c4aea]/5 border border-[#8c4aea]/10 rounded-xl p-4">
                     <div className="flex items-center gap-2 mb-1 text-xs text-[#8c4aea] font-bold">
                       <span className="text-sm"><Sms fontSize='15'/></span>
-                      New Message
+                      New essage
                     </div>
                     <div className="text-gray-300 text-sm">
                       Your positivity is contagious! Thanks for being you! ✨
