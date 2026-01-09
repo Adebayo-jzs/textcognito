@@ -40,17 +40,22 @@ export function SignUpForm({
       return
     }
 
-    try {
-      const { error } = await supabase.auth.signUp({
-        email,
-        password,
-        options: {
-          data: {
-            username: username,
-          },
-          emailRedirectTo: `${window.location.origin}/protected`,
+    const {data, error:authError } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: {
+          username: username,
         },
-      })
+        emailRedirectTo: `${window.location.origin}/profile`,
+      },
+    })
+    if (authError) {
+      setError(authError.message);
+      setIsLoading(false);
+      return;
+    }
+    try {
       if (error) throw error
       router.push('/auth/login')
     } catch (error) {
@@ -113,6 +118,7 @@ export function SignUpForm({
                   onChange={(e) => setRepeatPassword(e.target.value)} />
               </div>
               {error && <p className="text-sm text-red-500">{error}</p>}
+              {authError && <p className="text-sm text-red-500">{authError}</p>}
               <Button type="submit" className="w-full" disabled={isLoading}>
                 {isLoading ? 'Creating an account...' : 'Sign up'}
               </Button>
