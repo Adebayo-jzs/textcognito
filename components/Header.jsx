@@ -1,11 +1,36 @@
 "use client";
-import { useState } from "react";
+import { useState ,useEffect} from "react";
 import { Menu } from "lucide-react";
 import { Cancel, Close } from "@mui/icons-material";
 import Link from "next/link";
+import { createClient } from "@/lib/client";
 
-export default function Header() {
+export default  function Header() {
   const [open, setOpen] = useState(false);
+  const [session, setSession] = useState(null);
+
+  const supabase = createClient();
+    useEffect(() => {
+    const getSession = async () => {
+      const { data } = await supabase.auth.getSession();
+      setSession(data.session);
+    };
+
+    getSession();
+
+    // Listen for auth changes (login/logout)
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+
+    return () => subscription.unsubscribe();
+  }, [supabase]);
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    setOpen(false);
+  };
 
   return (
     <>
@@ -15,11 +40,33 @@ export default function Header() {
           <div className="text-xl text-[#8f48ec] font-bold">Textcognito</div>
 
           {/* Desktop Links */}
-          <nav className="hidden gap-8 md:flex">
+          <nav className="hidden gap-8 md:flex items-center">
             <Link href="#" className="hover:text-gray-300">Home</Link>
-            <Link href="/auth/login" className="hover:text-gray-300">About</Link>
-            <Link href="/auth/login" className="hover:text-gray-300">Projects</Link>
-            <Link href="#" className="hover:text-gray-300">Contact</Link>
+            {session ? (
+              <>
+                <Link href="/profile" className="hover:text-gray-300">
+                  Profile
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="rounded bg-[#8f48ec] px-4 py-2 text-sm hover:opacity-90"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <Link href="/auth/login" className="hover:text-gray-300">
+                  Login
+                </Link>
+                <Link
+                  href="/auth/sign-up"
+                  className="rounded bg-[#8f48ec] px-4 py-2 text-sm hover:opacity-90"
+                >
+                  Get Started
+                </Link>
+              </>
+            )}
           </nav>
 
           {/* Hamburger */}
@@ -45,10 +92,42 @@ export default function Header() {
           md:hidden
         `}
       >
-        <Link href="#" onClick={() => setOpen(false)} className="text-2xl">Home</Link>
-        <Link href="#" onClick={() => setOpen(false)} className="text-2xl">About</Link>
-        <Link href="#" onClick={() => setOpen(false)} className="text-2xl">Projects</Link>
-        <Link href="#" onClick={() => setOpen(false)} className="text-2xl">Contact</Link>
+        <Link href="/" onClick={() => setOpen(false)} className="text-2xl">Home</Link>
+      {session ? (
+          <>
+            <Link
+              href="/profile"
+              onClick={() => setOpen(false)}
+              className="text-2xl"
+            >
+              Profile
+            </Link>
+            <button
+              onClick={handleLogout}
+              className="text-2xl text-red-400"
+            >
+              Logout
+            </button>
+          </>
+        ) : (
+          <>
+            <Link
+              href="/auth/login"
+              onClick={() => setOpen(false)}
+              className="text-2xl"
+            >
+              Login
+            </Link>
+            <Link
+              href="/auth/sign-up"
+              onClick={() => setOpen(false)}
+              className="text-2xl text-[#8f48ec]"
+            >
+              Get Started
+            </Link>
+          </>
+        )}
+         
       </div>
     </>
   );
