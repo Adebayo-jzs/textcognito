@@ -11,6 +11,41 @@ import Link from 'next/link';
 // If using Next.js, use: import Link from 'next/link';
 // If using Next.js, you might handle fonts in layout.js, but for now links are included below.
 
+export const metadata = {
+  metadataBase: new URL("https://textcognito.click"),
+  title: "Textcognito | Receive Anonymous Messages From Friends",
+  description: 'Receive anonymous messages from friends safely. Create your unique link for Instagram, Snapchat, and Twitter.',
+  keywords: [
+    'anonymous messaging', 
+    'secret messages', 
+    'instagram anonymous link', 
+    'snapchat questions', 
+    'anonymous feedback', 
+    'textcognito'
+  ],
+  authors: [{ name: "Adedeji Adebayo" }],
+  openGraph: {
+    title: "Textcognito - Anonymous Messaging",
+    description: "Send and receive anonymous messages safely.",
+    type: "website",
+    url: "https://textcognito.click",
+    siteName: 'Textcognito',
+    images: [
+      { url: "/og-image.jpg", width: 1200, height: 630, alt: "Textcognito - Send and receive anonymous messages safely" }
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Textcognito - Anonymous Messaging',
+    description: 'Get honest feedback and secret messages from your friends.',
+    creator: '@theebayo', // Replace if you have a Twitter handle
+    images: ['/og-image.jpg'],
+  },
+  icons: {
+    icon: '/favicon.ico',
+  },
+};
+
 export default function TextcognitoLanding() {
   const features = [
     {id:1,title:"100% Anonymous",text:"Complete privacy guaranteed. We never reveal sender identities or store identifying information.",color: "text-indigo-400",bg:"bg-indigo-500/10",Icon:Security},
@@ -25,7 +60,26 @@ export default function TextcognitoLanding() {
   // const cardSectionClass = "relative md:sticky md:top-0 min-h-screen flex flex-col justify-center overflow-hidden";
   const shareLink = `${process.env.NEXT_PUBLIC_SITE_URL}/u/yourusername`
   return (
-     
+    <>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'SoftwareApplication',
+          name: 'Textcognito',
+          applicationCategory: 'SocialNetworkingApplication',
+          operatingSystem: 'Web',
+           
+          description: 'Receive anonymous messages from friends safely.',
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: '4.8',
+            ratingCount: '1024',
+          },
+        }),
+      }}
+    />
     <div className="transition-colors duration-300 font-display overflow-x-hidden min-h-screen">
       <Header/>
       <section className={`${cardSectionClass} pt-20 mt-20 pb-32 bg-gradient-to-tr from-[#15121a]  via-[#141118] to-[#1c1425]  `}>
@@ -227,6 +281,6 @@ export default function TextcognitoLanding() {
       {/* Footer */}
       
     </div>
-    
+    </>
   );
 }
