@@ -40,23 +40,59 @@ export function SignUpForm({
       return
     }
 
-    const {data, error:authError } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: {
-          username: username,
-        },
-        emailRedirectTo: `${window.location.origin}/profile`,
-      },
-    })
-    if (authError) {
-      setError(authError.message);
-      setIsLoading(false);
-      return;
-    }
     try {
-      if (error) throw error
+      const { data: existingUser, error: usernameError } = await supabase
+        .from('profiles')
+        .select('id')
+        .eq('username', username)
+        .maybeSingle()
+
+      if (usernameError) throw usernameError
+
+      if (existingUser) {
+        setError('Username already exists')
+        setIsLoading(false)
+        return
+      }
+      const res = await fetch('/api/check-email', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ email }),
+})
+
+const result = await res.json()
+
+if (result.exists) {
+  setError('Email already registered. Please log in.')
+  setIsLoading(false)
+  return
+}
+      // const { error } = await supabase.auth.signUp({
+      //   email,
+      //   password,
+      //   options: {
+      //     data: {
+      //       username: username,
+      //     },
+      //     emailRedirectTo: `${window.location.origin}/profile`,
+      //   },
+      // })
+      // if (error) throw error
+      const { data, error: authError } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: { username },
+          emailRedirectTo: `${window.location.origin}/protected`,
+        },
+      })
+
+      if (authError) {
+        setError(authError.message)
+        setIsLoading(false)
+        return
+      }
+      
       router.push('/auth/login')
     } catch (error) {
       setError(error instanceof Error ? error.message : 'An error occurred')
@@ -118,7 +154,6 @@ export function SignUpForm({
                   onChange={(e) => setRepeatPassword(e.target.value)} />
               </div>
               {error && <p className="text-sm text-red-500">{error}</p>}
-              {authError && <p className="text-sm text-red-500">{authError}</p>}
               <Button type="submit" className="w-full" disabled={isLoading}>
                 {isLoading ? 'Creating an account...' : 'Sign up'}
               </Button>
