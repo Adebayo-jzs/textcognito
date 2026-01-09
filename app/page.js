@@ -27,7 +27,8 @@ export default function TextcognitoLanding() {
   return (
      
     <div className="transition-colors duration-300 font-display overflow-x-hidden min-h-screen">
-      <section className={`${cardSectionClass} pt-20 pb-32 bg-gradient-to-tr from-[#15121a]  via-[#141118] to-[#1c1425]  `}>
+      <Header/>
+      <section className={`${cardSectionClass} pt-20 mt-20 pb-32 bg-gradient-to-tr from-[#15121a]  via-[#141118] to-[#1c1425]  `}>
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="max-w-2xl">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#8f48ec]/10 border border-[#8f48ec]/20 text-[#8f48ec] text-xs font-semibold mb-8">
