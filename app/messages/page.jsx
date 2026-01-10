@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/server';
 import Link from 'next/link';
+import CopyLink from './copylink';
 
 // --- Utility: Relative Time Formatter ---
 // function getRelativeTime(dateString) {
@@ -49,9 +50,10 @@ export default async function Dashboard() {
     const isRecent = (new Date() - new Date(m.created_at)) < 86400000000000; // 24 hours
     return isRecent; // OR check !m.read_at if you have that column
   }).length || 0;
+   
 
   return (
-    <div className="bg-[#0f0f0f] text-white antialiased min-h-screen flex flex-col selection:bg-[#8f48ec] selection:text-white font-['Outfit',sans-serif]">
+    <div className="bg-[#0f0f0f] text-white antialiased min-h-screen flex flex-col selection:bg-[#8f48ec] selection:text-white font-['Outfit',sans-serif] pt-20">
       {/* Fonts & Icons */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
@@ -59,7 +61,7 @@ export default async function Dashboard() {
       `}</style>
 
       {/* Navbar */}
-      <nav className="sticky top-0 z-50 bg-[#0f0f0f]/80 backdrop-blur-md border-b border-white/5">
+      {/* <nav className="sticky top-0 z-50 bg-[#0f0f0f]/80 backdrop-blur-md border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#8f48ec] to-[#8949c3] flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-[#8f48ec]/20">
@@ -91,7 +93,7 @@ export default async function Dashboard() {
             </div>
           </div>
         </div>
-      </nav>
+      </nav> */}
 
       {/* Main Content */}
       <main className="flex-grow relative overflow-hidden">
@@ -115,18 +117,7 @@ export default async function Dashboard() {
             </div>
             
             {/* Display Link & Copy Action */}
-            <div className="flex items-center gap-3">
-              <div className="hidden sm:block text-xs text-gray-500 font-medium">
-                {shareLink.replace('https://', '')}
-              </div>
-              {/* Note: This button is static. For 'Click to Copy', move this button to a client component */}
-              <button className="bg-[#1a1a1a] hover:bg-[#121212] text-white border border-white/10 hover:border-[#8f48ec]/50 text-sm font-medium py-2.5 px-5 rounded-xl shadow-lg transition-all flex items-center gap-2 group cursor-copy">
-                <span className="material-symbols-outlined text-[18px] text-gray-400 group-hover:text-[#8f48ec] transition-colors">
-                  content_copy
-                </span>
-                Copy Link
-              </button>
-            </div>
+             <CopyLink shareLink={shareLink}/>
           </div>
 
           {/* Messages Grid */}
