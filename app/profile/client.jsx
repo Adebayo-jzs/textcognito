@@ -18,12 +18,15 @@ export default function DashboardClient({ shareLink, username,messageCount }) {
     }
   };
   const handleShare = async () => {
+    const validShareLink = shareLink.startsWith("http") 
+      ? shareLink 
+      : `https://${shareLink}`;
     if (navigator.share) {
       try {
         await navigator.share({
-          title: 'Textcognito',
+          title: 'Textcognito - Send Anonymous Messages',
           text: `Send ${username} an anonymous message!`,
-          url: shareLink.replace('https://', ''),
+          url: validShareLink,
         });
       } catch (err) {
         console.log('Share canceled:', err);
