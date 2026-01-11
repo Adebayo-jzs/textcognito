@@ -31,8 +31,7 @@ export default function DashboardClient({ shareLink, username,messageCount }) {
       } catch (err) {
         console.log('Share canceled:', err);
       }
-    } else {
-      // Fallback: Copy link if browser doesn't support native share (e.g. desktop)
+    } else {  
       navigator.clipboard.writeText(shareLink);
       alert("Link copied to clipboard!");
     }
