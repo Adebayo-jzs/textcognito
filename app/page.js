@@ -8,6 +8,8 @@ import Footer from '@/components/Footer';
 import { Bolt, ContentCopy, LinkOutlined, Security, ShareSharp, Sms ,Download, AppRegistration} from '@mui/icons-material';
 import { ChartAreaIcon, Filter} from 'lucide-react';
 import Link from 'next/link';
+import { Star } from '@mui/icons-material';
+import Image from 'next/image';
 // If using Next.js, use: import Link from 'next/link';
 // If using Next.js, you might handle fonts in layout.js, but for now links are included below.
 
@@ -55,7 +57,29 @@ export default function TextcognitoLanding() {
     {id:5,title:"Analytics",text:"Track views, messages received, and engagement stats in your dashboard.",color: "text-violet-400", bg: "bg-violet-500/10", hover: "group-hover:bg-violet-500/20",Icon:ChartAreaIcon},
     {id:6,title:"Custom Link",text:"Get your personalized link like textcognito.com/yourname. Easy to remember and share!",color: "text-purple-400", bg: "bg-purple-500/10",hover: "group-hover:bg-purple-500/20",Icon:LinkOutlined},
   ]
- 
+  const testimonials = [
+    {
+      id: 1,
+      name: "Sarah J.",
+      text: "\"This app is amazing! I've received so many sweet messages from my friends. It's really fun and completely safe!\"",
+      image: "/sarah.png", // Placeholder for Sarah
+      type: "image"
+    },
+    {
+      id: 2,
+      name: "Mike T.",
+      text: "\"Best anonymous messaging platform! Super easy to use and I love the clean design. Highly recommend!\"",
+      image: "/mike.png", // Placeholder for Mike
+      type: "image"
+    },
+    {
+      id: 3,
+      name: "Bayo A.",
+      text: "\"I was skeptical at first, but this is genuinely fun! The privacy features make me feel secure.\"",
+      initial: "B",
+      type: "initial" // Special handling for the letter avatar
+    }
+  ]
   const cardSectionClass = "relative ";
   // const cardSectionClass = "relative md:sticky md:top-0 min-h-screen flex flex-col justify-center overflow-hidden";
   const shareLink = `${process.env.NEXT_PUBLIC_SITE_URL}/u/yourusername`
@@ -266,6 +290,145 @@ export default function TextcognitoLanding() {
           </div>
         </div>
       </section> 
+      <section className={`${cardSectionClass} py-20 relative z-10 bg-[#121212]  px-6`}>
+        <div className="text-white text-center  mb-16 max-w-2xl mx-auto">
+          <p className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#8f48ec]/10 border border-[#8f48ec]/20 text-[#8f48ec] text-xs font-semibold">
+            TESTIMONIALS
+          </p>
+          <h2 className="text-2xl md:text-4xl font-bold mb-4 mt-6 ">Loved by Thousands</h2>
+          <p className="text-gray-400">See what our users are saying about Textcognito.</p>
+        </div>
+        <div className="max-w-7xl mx-auto  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 text-white gap-6">
+           {testimonials.map((review) => (
+            <div key={review.id} className="bg-[#1a1a1a] rounded-2xl p-6 border border-white/5 relative">
+              <div className="flex gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <span key={i} className=" text-yellow-400  fill-current"> 
+                    <Star style={{fontSize:"16px"}}/>
+                  </span>
+                ))}
+              </div>
+              <p className='text-gray-400 text-sm flex-grow mb-4'>{review.text}</p>
+              {/* User Profile */}
+              <div className="flex items-center gap-3 mt-auto">
+                {/* Avatar Logic */}
+                <div className="w-10 h-10 rounded-full overflow-hidden shrink-0">
+                  {review.type === 'image' ? (
+                    <Image 
+                      src={review.image} 
+                      alt={review.name} 
+                      className="w-full h-full object-cover grayscale-[0.2]"
+                      width={100}
+                      height={100}
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-[#3d2c5e] flex items-center justify-center text-[#a87ffb] font-bold">
+                      {review.initial}
+                    </div>
+                  )}
+                </div>
+                <span className="text-white font-bold text-sm tracking-wide">
+                  {review.name}
+                </span>
+              </div>
+            </div>
+           ))}
+           
+           
+        </div>
+      </section> 
+      
+      {/* Call to Action Section (Purple Gradient) */}
+      <section className="w-full bg-gradient-to-br from-[#8f48ec] to-[#7b3bd1]  py-20 px-4 text-center">
+        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          Ready to Start Receiving Messages?
+        </h2>
+        <p className="text-white/90 mb-8 font-medium">
+          Join thousands (maybe not thousands) of users who are already connecting with friends anonymously.
+        </p>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <button className="bg-white text-[#8f48ec] font-bold px-8 py-3 rounded-lg shadow-lg hover:bg-slate-50 transition-colors">
+            Create Your Free Account
+          </button>
+          <button className="bg-transparent border border-white text-white font-bold px-8 py-3 rounded-lg hover:bg-white/10 transition-colors">
+            Learn More
+          </button>
+        </div>
+      </section>
+      
+      <footer className="w-full">
+      {/* Main Footer Links */}
+      <div className="bg-[#0a080c] pt-16 pb-8 border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+          
+          {/* Brand Column */}
+          <div>
+            <div className="flex items-center gap-2 mb-4">
+              <div className="bg-[#8e46ec] w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold text-lg">T</div>
+              <span className="text-white font-bold text-xl">Textcognito</span>
+            </div>
+            <p className="text-slate-500 text-sm leading-relaxed mb-6">
+              The safest way to receive anonymous messages from friends.
+            </p>
+            {/* Social Icons (using placeholders) */}
+            <div className="flex gap-3">
+              {['tw', 'ig', 'fb'].map((social) => (
+                <div key={social} className="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center cursor-pointer transition-colors">
+                  <span className="text-slate-400 text-xs font-bold uppercase">{social}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          {/* <div> 
+          <Link href="/" className='text-gray-400 hover:text-white'>About</Link>
+          </div>
+          <div> 
+          <Link href="/" className='text-gray-400 hover:text-white'>Safety</Link>
+          </div>
+          <div> 
+          <Link href="/" className='text-gray-400 hover:text-white'>About</Link>
+          </div> */}
+ 
+          {/* Links Columns */}
+          <div>
+            <h3 className="text-white font-bold mb-6">Product</h3>
+            <div className="flex flex-col space-y-3 text-slate-500 text-sm">
+              <Link href="/" className="hover:text-primary cursor-pointer transition-colors">Features</Link>
+              <Link href="/" className="hover:text-primary cursor-pointer transition-colors">Pricing</Link>
+              <Link href="/" className="hover:text-primary cursor-pointer transition-colors">FAQ</Link>
+              <Link href="/" className="hover:text-primary cursor-pointer transition-colors">Roadmap</Link>
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-white font-bold mb-6">Company</h3>
+            <ul className="space-y-3 text-slate-500 text-sm">
+              <Link href="/" className="hover:text-primary cursor-pointer transition-colors">About Us</Link>
+              <Link href="/" className="hover:text-primary cursor-pointer transition-colors">Contact</Link>
+              <Link href="/" className="hover:text-primary cursor-pointer transition-colors">Blog</Link>
+              <Link href="/" className="hover:text-primary cursor-pointer transition-colors">Careers</Link>
+            </ul>
+          </div>
+
+          {/* <div>
+            <h3 className="text-white font-bold mb-6">Legal</h3>
+            <ul className="space-y-3 text-slate-500 text-sm">
+              <Link href="/" className="hover:text-primary cursor-pointer transition-colors">Privacy Policy</Link>
+              <Link href="/" className="hover:text-primary cursor-pointer transition-colors">Terms of Service</Link>
+              <Link href="/" className="hover:text-primary cursor-pointer transition-colors">Cookie Policy</Link>
+              <Link href="/" className="hover:text-primary cursor-pointer transition-colors">Guidelines</Link>
+            </ul>
+          </div> */}
+        </div>
+
+        {/* Copyright */}
+        <div className="mt-16 pt-8 border-t border-white/5 text-center">
+          <p className="text-slate-600 text-sm">
+            © 2026 Textcognito. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
       {/* <Header/> */}
 
 
