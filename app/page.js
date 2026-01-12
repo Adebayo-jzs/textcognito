@@ -402,12 +402,12 @@ export default function TextcognitoLanding() {
 
           <div>
             <h3 className="text-white font-bold mb-6">Company</h3>
-            <ul className="space-y-3 text-slate-500 text-sm">
+            <div className="flex flex-col space-y-3 text-slate-500 text-sm">
               <Link href="/" className="hover:text-primary cursor-pointer transition-colors">About Us</Link>
               <Link href="/" className="hover:text-primary cursor-pointer transition-colors">Contact</Link>
               <Link href="/" className="hover:text-primary cursor-pointer transition-colors">Blog</Link>
               <Link href="/" className="hover:text-primary cursor-pointer transition-colors">Careers</Link>
-            </ul>
+            </div>
           </div>
 
           {/* <div>
