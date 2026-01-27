@@ -26,6 +26,13 @@
 * **Database & Auth**: [Supabase](https://supabase.com/) (`@supabase/supabase-js`, `@supabase/ssr`)
 * **AI Integration**: Google GenAI (`@google/genai`) for content safety and filtering.
 
+[![Twitter Follow](https://img.shields.io/twitter/follow/theebayo?style=social)](https://x.com/theebayo)
+
+## 👤 Author
+
+**Adedeji Samod**
+* Twitter: [@theebayo](https://x.com/theebayo)
+* Github: [@Adebayo-jzs](https://github.com/Adebayo-jzs)
  
 
  
