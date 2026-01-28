@@ -23,7 +23,7 @@ export default async function OgImage({ params }) {
 
     // Fetch post title
     const { data: profile } = await supabase
-        .from("posts")
+        .from("profiles")
         .select('id,username')
         .eq("username", username)
         .single();
