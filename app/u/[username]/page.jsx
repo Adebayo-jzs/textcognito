@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import { createClient } from '@/lib/server' // Your server client
 import MessageForm from './message-form'
-import OgImage from './og-image';   // We'll create this next
+import OgImage from './opengraph-image';   // We'll create this next
 
 // export async function generateMetadata({ params }) {
 //   const supabase = await createClient()
@@ -23,7 +23,7 @@ import OgImage from './og-image';   // We'll create this next
 //   const displayName = profile.username.charAt(0).toUpperCase() + profile.username.slice(1);
 //   const title = `Send ${displayName} a message`;
 //   const description = `Send a completely anonymous message to ${profile.username}`;
-//   const ogUrl = `https://textcognito.click/u/${profile.username}/og-image`;
+//   const ogUrl = `https://textcognito.click/u/${profile.username}/opengraph-image`;
 
 //   return {
 //     title,
@@ -73,7 +73,7 @@ export async function generateMetadata({ params }) {
   const description =
     `Send ${displayName} a completely anonymous message on Textcognito. No login required. 100% private and secure.`;
 
-  const ogUrl = `https://textcognito.click/u/${profile.username}/og-image`;
+  const ogUrl = `https://textcognito.click/u/${profile.username}/opengraph-image`;
 
   return {
     title,
