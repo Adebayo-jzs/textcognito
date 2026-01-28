@@ -5,9 +5,9 @@
   </p>
   
   <p>
-    <a href="https://textcognito.click">View Demo</a> •
-    <a href="#-getting-started">Get Started</a> •
-    <a href="#-features">Features</a>
+    <a href="https://textcognito.click">Preview</a> 
+    <!-- <a href="#-getting-started">Get Started</a> • -->
+    <!-- <a href="#-features">Features</a> -->
   </p>
 
   [![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
@@ -72,7 +72,9 @@ Follow these steps to run the project locally.
    ```env
    NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
    NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+   NEXT_PUBLIC_SITE_URL=baseUrl
    GEMINI_API_KEY=your_google_genai_key
+   OPENAI_API_KEY=your_openai_api_key
    ```
 
 4. **Run the development server**
@@ -91,8 +93,8 @@ incognito/
 │   └── auth/         # Authentication routes
 ├── components/       # Reusable UI components
 ├── lib/              # Utility functions and Supabase clients
-├── public/           # Static assets
-└── styles/           # Global styles
+# ├── public/           # Static assets
+└── public/           # Global styles
 ```
 
 ## 🤝 Contributing
