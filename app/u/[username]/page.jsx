@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import { createClient } from '@/lib/server' // Your server client
-import MessageForm from './message-form'  
-// import OgImage from './og-image';   // We'll create this next
+import MessageForm from './message-form'
+import OgImage from './og-image';   // We'll create this next
 
 export async function generateMetadata({ params }) {
   const supabase = await createClient()
@@ -13,32 +13,39 @@ export async function generateMetadata({ params }) {
     .eq("username", username)
     .single();
 
-  // if (!profile) {
-  //   notFound();
-  // }
-  const Username = username.charAt(0).toUpperCase() + username.slice(1);
+  if (!profile) {
+    return {
+      title: "User Not Found | Textcognito",
+      description: "The user you are looking for does not exist.",
+    };
+  }
+
+  const displayName = profile.username.charAt(0).toUpperCase() + profile.username.slice(1);
+  const title = `Send ${displayName} a message`;
+  const description = `Send a completely anonymous message to ${profile.username}`;
+  const ogUrl = `https://textcognito.click/u/${profile.username}/og-image`;
+
   return {
-    title:`Send ${Username} a message` ,
-    description: `Send a completely anonymous message to ${profile.username}`,
+    title,
+    description,
     openGraph: {
-      title:`Send ${profile.username} a message` ,
-      description: `Send a completely anonymous message to ${profile.username}`,
+      title,
+      description,
       url: `https://textcognito.click/u/${profile.username}`,
-      // type: "webpage",
       images: [
         {
-          url: `https://textcognito.click/u/${profile.username}/og-image`,
+          url: ogUrl,
           width: 1200,
           height: 630,
-          alt: `Send ${profile.username} a message`,
+          alt: title,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title:`Send ${profile.username} a message` ,
-      description: `Send a completely anonymous message to ${profile.username}`,
-      images: [`https://textcognito.click/u/${profile.username}/og-image`],
+      title,
+      description,
+      images: [ogUrl],
     },
   };
 }
@@ -70,7 +77,7 @@ export default async function PublicProfilePage({ params }) {
   //       <p className="text-gray-500">
   //         Sending to <span className="font-bold text-[#9d50f3]">@{profile.username}</span>
   //       </p>
-        
+
   //       {/* Pass the recipient's ID to the form component */}
   //       <MessageForm recipientId={profile.id} />
   //     </div>
@@ -78,29 +85,29 @@ export default async function PublicProfilePage({ params }) {
   //   </div>
   //   </section>
   // )
-  
+
   return (
     <>
       {/* NOTE: In a production Next.js app, these link tags 
         should ideally go in your app/layout.js or Next/Head.
         Included here for a true "one-file" drop-in experience.
       */}
- 
+
 
       <div className=" xbg-[#181121]   text-slate-900 dark:text-white min-h-screen flex flex-col overflow-x-hidden selection:bg-[#8e46ec] selection:text-white">
-        
+
         {/* Background Glow Effect */}
         <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#8e46ec]/10 rounded-full blur-[120px] pointer-events-none z-0" />
-        
-        
+
+
 
         {/* Main Content Area */}
         <main className="relative z-10 flex-1 flex items-center justify-center p-4 sm:p-6 lg:p-10">
           <div className="w-full max-w-lg">
-            
+
             {/* Glassmorphism Card */}
             <div className="relative bg-[#201c26]/60 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden p-6 sm:p-8">
-              
+
               {/* Avatar Section */}
               <div className="flex flex-col items-center mb-6">
                 {/* <div className="relative w-24 h-24 sm:w-28 sm:h-28 mb-4 rounded-full p-1 bg-gradient-to-br from-[#8e46ec]/50 to-transparent">
@@ -115,7 +122,7 @@ export default async function PublicProfilePage({ params }) {
                 </div> */}
                 <h1 className="text-3xl font-bold text-center text-white">Send me an anonymous message!</h1>
                 <p className="text-gray-500">
-                    Sending to <span className="font-bold text-[#9d50f3]">@{profile.username}</span>
+                  Sending to <span className="font-bold text-[#9d50f3]">@{profile.username}</span>
                 </p>
               </div>
 
@@ -141,7 +148,7 @@ export default async function PublicProfilePage({ params }) {
                   <span className="material-symbols-outlined text-xl group-hover/btn:translate-x-1 transition-transform">send</span>
                 </button>
               </form> */}
-               <MessageForm recipientId={profile.id} />
+              <MessageForm recipientId={profile.id} />
 
               {/* Disclaimer */}
               <div className="mt-6 pt-4 border-t border-white/5 text-center">
