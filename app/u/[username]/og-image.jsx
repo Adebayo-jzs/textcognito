@@ -113,10 +113,7 @@ export default async function OgImage({ params }) {
           display: "flex",
           gap: 20,
         }}>
-          {/* You might want to make these dynamic too if they are in the profile */}
-          <span>Software Engineering</span>
-          <span>•</span>
-          <span>Web Development</span>
+           
         </div>
       </div>
     ),
