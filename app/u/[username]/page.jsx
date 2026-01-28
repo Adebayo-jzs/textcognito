@@ -3,13 +3,59 @@ import { createClient } from '@/lib/server' // Your server client
 import MessageForm from './message-form'
 import OgImage from './og-image';   // We'll create this next
 
+// export async function generateMetadata({ params }) {
+//   const supabase = await createClient()
+//   const { username } = await params;
+
+//   const { data: profile } = await supabase
+//     .from("profiles")
+//     .select("id,username")
+//     .eq("username", username)
+//     .single();
+
+//   if (!profile) {
+//     return {
+//       title: "User Not Found | Textcognito",
+//       description: "The user you are looking for does not exist.",
+//     };
+//   }
+
+//   const displayName = profile.username.charAt(0).toUpperCase() + profile.username.slice(1);
+//   const title = `Send ${displayName} a message`;
+//   const description = `Send a completely anonymous message to ${profile.username}`;
+//   const ogUrl = `https://textcognito.click/u/${profile.username}/og-image`;
+
+//   return {
+//     title,
+//     description,
+//     openGraph: {
+//       title,
+//       description,
+//       url: `https://textcognito.click/u/${profile.username}`,
+//       images: [
+//         {
+//           url: ogUrl,
+//           width: 1200,
+//           height: 630,
+//           alt: title,
+//         },
+//       ],
+//     },
+//     twitter: {
+//       card: "summary_large_image",
+//       title,
+//       description,
+//       images: [ogUrl],
+//     },
+//   };
+// }
 export async function generateMetadata({ params }) {
-  const supabase = await createClient()
-  const { username } = await params;
+  const supabase = await createClient();
+  const { username } =await params;
 
   const { data: profile } = await supabase
     .from("profiles")
-    .select("id,username")
+    .select("username")
     .eq("username", username)
     .single();
 
@@ -20,9 +66,13 @@ export async function generateMetadata({ params }) {
     };
   }
 
-  const displayName = profile.username.charAt(0).toUpperCase() + profile.username.slice(1);
-  const title = `Send ${displayName} a message`;
-  const description = `Send a completely anonymous message to ${profile.username}`;
+  const displayName =
+    profile.username.charAt(0).toUpperCase() + profile.username.slice(1);
+
+  const title = `Send ${displayName} an anonymous message on Textcognito`;
+  const description =
+    `Send ${displayName} a completely anonymous message on Textcognito. No login required. 100% private and secure.`;
+
   const ogUrl = `https://textcognito.click/u/${profile.username}/og-image`;
 
   return {
@@ -32,14 +82,7 @@ export async function generateMetadata({ params }) {
       title,
       description,
       url: `https://textcognito.click/u/${profile.username}`,
-      images: [
-        {
-          url: ogUrl,
-          width: 1200,
-          height: 630,
-          alt: title,
-        },
-      ],
+      images: [{ url: ogUrl, width: 1200, height: 630 }],
     },
     twitter: {
       card: "summary_large_image",
@@ -49,6 +92,7 @@ export async function generateMetadata({ params }) {
     },
   };
 }
+
 
 
 export default async function PublicProfilePage({ params }) {
