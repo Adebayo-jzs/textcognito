@@ -5,6 +5,7 @@ import Hero from '@/components/sections/Hero';
 import React from 'react';
 import GetToKnow from '@/components/sections/get-to-know';
 import Footer from '@/components/Footer';
+import { HugeiconsIcon } from "@hugeicons/react";
 import { Bolt, ContentCopy, LinkOutlined, Security, ShareSharp, Sms ,Download, AppRegistration} from '@mui/icons-material';
 import { ChartAreaIcon, Filter} from 'lucide-react';
 import Link from 'next/link';
@@ -80,8 +81,8 @@ export default function TextcognitoLanding() {
       type: "initial" // Special handling for the letter avatar
     }
   ]
-  const cardSectionClass = "relative ";
-  // const cardSectionClass = "relative md:sticky md:top-0 min-h-screen flex flex-col justify-center overflow-hidden";
+  // const cardSectionClass = "relative ";
+  const cardSectionClass = "relative md:sticky md:top-0 min-h-screen flex flex-col justify-center overflow-hidden";
   const shareLink = `${process.env.NEXT_PUBLIC_SITE_URL}/u/yourusername`
   return (
     <>
@@ -106,7 +107,7 @@ export default function TextcognitoLanding() {
     />
     <div className="transition-colors duration-300 font-display overflow-x-hidden min-h-screen">
       {/* <Header/> */}
-      <section className={`${cardSectionClass} pt-20 mt-20 pb-32 bg-gradient-to-tr from-[#15121a]  via-[#141118] to-[#1c1425]  `}>
+      <section className="pt-20  mt-20 pb-32 bg-gradient-to-tr from-[#15121a]  via-[#141118] to-[#1c1425]">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="max-w-2xl">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#8f48ec]/10 border border-[#8f48ec]/20 text-[#8f48ec] text-xs font-semibold mb-8">
@@ -201,7 +202,7 @@ export default function TextcognitoLanding() {
 
 
 
-      <section className={`${cardSectionClass} py-20 relative z-10 bg-[#121212]  px-6`}>
+      <section className="py-20 relative z-10 bg-[#121212]  px-6">
         <div className="text-white text-center  mb-16 max-w-2xl mx-auto">
           <p className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#8f48ec]/10 border border-[#8f48ec]/20 text-[#8f48ec] text-xs font-semibold">
             FEATURES
@@ -222,7 +223,7 @@ export default function TextcognitoLanding() {
         </div>
       </section> 
 
-      <section className={`${cardSectionClass} py-20 relative z-10 bg-[#0f0f0f]  px-6`}>
+      <section className="py-20 relative z-10 bg-[#0f0f0f]  px-6">
         <div className="text-white text-center  mb-16 max-w-2xl mx-auto">
           <p className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#8f48ec]/10 border border-[#8f48ec]/20 text-[#8f48ec] text-xs font-semibold">
             HOW IT WORKS
@@ -287,7 +288,7 @@ export default function TextcognitoLanding() {
           </div>
         </div>
       </section> 
-      <section className={`${cardSectionClass} py-20 relative z-10 bg-[#121212]  px-6`}>
+      <section className="py-20 relative z-10 bg-[#121212]  px-6">
         <div className="text-white text-center  mb-16 max-w-2xl mx-auto">
           <p className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#8f48ec]/10 border border-[#8f48ec]/20 text-[#8f48ec] text-xs font-semibold">
             TESTIMONIALS
