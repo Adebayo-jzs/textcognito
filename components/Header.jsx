@@ -58,11 +58,13 @@ export default  function Header() {
     router.push('/auth/login')
     setOpen(false);
   };
+  // const pathname = usePathname();
+  const hideNavbar = pathname.startsWith("/register");
 
   return (
     <>
       {/* Navbar */}
-      <header className="fixed top-0 left-0 z-50 w-full  p-4 text-white">  
+      <header className={`fixed top-0 left-0 z-50 w-full  p-4 text-white ${hideNavbar ? "hidden":""}`}>  
         {/* <div className="mx-auto flex  max-w-7xl items-center bg-[#1a1a1a]/80 backdrop-blur-md rounded justify-between px-6 py-4"> */}
         <div className={`mx-auto flex  max-w-7xl items-center  rounded justify-between px-6 py-4 ${open ? "" : "bg-[#1a1a1a]/80 backdrop-blur-md"}`}>
           {/* <div className="text-xl text-[#8f48ec] font-bold">Textcognito</div> */}

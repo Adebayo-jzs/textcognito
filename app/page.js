@@ -223,7 +223,7 @@ export default function TextcognitoLanding() {
         </div>
       </section> 
 
-      <section className="py-20 relative z-10 bg-[#0f0f0f]  px-6">
+      <section className="py-20 relative z-10 bg-[#e8dafb]  px-6">
         <div className="text-white text-center  mb-16 max-w-2xl mx-auto">
           <p className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#8f48ec]/10 border border-[#8f48ec]/20 text-[#8f48ec] text-xs font-semibold">
             HOW IT WORKS
@@ -337,8 +337,9 @@ export default function TextcognitoLanding() {
       </section> 
       
       {/* Call to Action Section (Purple Gradient) */}
-      <section className="w-full bg-gradient-to-br from-[#8f48ec] to-[#7b3bd1]  py-20 px-4 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+      <section className="w-full bg-[#e8dafb]  py-20 px-4 text-center">
+      {/* <section className="w-full bg-gradient-to-br from-[#8f48ec] to-[#7b3bd1]  py-20 px-4 text-center"> */}
+        <h2 className="text-3xl md:text-4xl font-bold text-[#000a08] mb-4">
           Ready to Start Receiving Messages?
         </h2>
         <p className="text-white/90 mb-8 font-medium">
