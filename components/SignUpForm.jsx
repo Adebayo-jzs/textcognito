@@ -66,7 +66,7 @@ export default function NewRegisterForm() {
                 return
             }
             
-            router.push('/auth/login')
+            router.push('/login')
         } catch (error) {
             setError(error instanceof Error ? error.message : 'An error occurred')
         } finally {
