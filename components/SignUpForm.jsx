@@ -12,7 +12,7 @@ import { Loader2, Check } from 'lucide-react';
 import { Google } from "@mui/icons-material";
 import { GoogleLogin } from '@/components/google-signin';
 import { HugeiconsIcon } from '@hugeicons/react' 
-import { ViewOffSlashIcon,ViewIcon } from '@hugeicons/core-free-icons/index'    
+import { ViewOffSlashIcon,ViewIcon , CheckCheck, CheckUnread01FreeIcons, Checkmark } from '@hugeicons/core-free-icons/index'    
 
 export default function NewRegisterForm() {
     const [username, setUsername] = useState('')
@@ -212,25 +212,28 @@ export default function NewRegisterForm() {
                  <div className="relative z-10 max-w-lg w-full">
                     <div className="bg-[#1a191b] backdrop-blur-2xl border border-white/10 rounded-[2.5rem] p-10 shadow-2xl">
                         <div className="mb-8">
-                            <h3 className="text-3xl font-bold text-white mb-2 leading-tight">Join the Elite Community</h3>
+                            <h3 className="text-3xl font-bold text-white mb-2 leading-tight">Join the Community</h3>
                             <p className="text-gray-300 leading-relaxed text-lg">
-                                "TextCognito has redefined digital messaging. The aesthetics, security, and user experience are simply unmatched."
+                                TextCognito is being built by a solo developer leveraging AI to create meaningful, safe, and beautifully designed products. No massive team — just a deep passion for building things that matter.
                             </p>
                         </div>
+                        <Link href="https://theebayo.name.ng">
                         <div className="flex items-center gap-5">
                             <div className="w-14 h-14 rounded-full bg-gradient-to-tr from-[#D1C0EC] to-[#8D77A8] flex items-center justify-center text-[#1b0e20] font-bold text-xl">
-                                SJ
+                                AA
                             </div>
                             <div>
                                 <div className="text-white font-bold flex items-center gap-2 text-lg">
-                                    Sarah Jenkins
+                                    Adebayo Adedeji
                                     <div className="w-5 h-5 rounded-full bg-[#D1C0EC] flex items-center justify-center">
-                                        <Check className="w-3 h-3 text-[#1b0e20]" />
+                                        {/* <Check className="w-3 h-3 text-[#1b0e20]" /> */}
+                                        <HugeiconsIcon icon={Checkmark} className="w-3 h-3 text-[#1b0e20]"/>
                                     </div>
                                 </div>
-                                <div className="text-sm text-gray-400">Content Creator</div>
+                                <div className="text-sm text-gray-400">Software Developer</div>
                             </div>
                         </div>
+                        </Link>
 
                         <div className="mt-10 pt-8 border-t border-white/5">
                             <div className="flex items-center gap-4 justify-between">
@@ -242,7 +245,7 @@ export default function NewRegisterForm() {
                                     ))}
                                 </div>
                                 <div className="text-sm text-gray-400">
-                                    Joined by <span className="text-[#D1C0EC] font-bold">500,000+</span> professionals
+                                    Joined by <span className="text-[#D1C0EC] font-bold">5+</span> users
                                 </div>
                             </div>
                         </div>
