@@ -11,8 +11,8 @@ import Footer from '@/components/Footer';
 
 export const metadata = {
   metadataBase: new URL("https://textcognito.click"),
-  title: "TextCognito | The Future of Anonymous Messaging",
-  description: 'Receive anonymous messages with confidence. The safe, secure, and world-class way to connect.',
+  title: "TextCognito | Receive anonymous messages from friends.",
+  description: 'Receive anonymous messages from friends. The safe, secure, and world-class(or not) way to connect.',
 };
 
 export default function TextcognitoLanding() {
