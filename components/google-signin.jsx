@@ -45,7 +45,7 @@ export function GoogleLogin({ className, ...props }) {
           <form onSubmit={handleSocialLogin}>
             <div className="flex flex-col gap-6">
               {error && <p className="text-sm text-destructive-500">{error}</p>}
-              <Button type="submit" className="w-full" disabled={isLoading}>
+              <Button type="submit" className="w-full h-12 bg-[#44334A]/30 border-white/10 text-white hover:bg-[#44334A]/50 hover:text-white rounded-xl transition-all flex items-center justify-center gap-2" disabled={isLoading}>
                 <Image src={"/google.png"}  width={20} height={20} alt=""/>
                 {isLoading ? 'Logging in...' : 'Continue with Google'}
               </Button>

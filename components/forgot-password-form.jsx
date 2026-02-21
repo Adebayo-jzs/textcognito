@@ -45,7 +45,7 @@ export function ForgotPasswordForm({
   }
 
   return (
-    <div className={cn('flex flex-col gap-6', className)} {...props}>
+    <div className={cn('flex flex-col gap-6 ', className)} {...props}>
       {success ? (
         <Card>
           <CardHeader>
@@ -60,14 +60,15 @@ export function ForgotPasswordForm({
           </CardContent>
         </Card>
       ) : (
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-2xl">Reset Your Password</CardTitle>
-            <CardDescription>
-              Type in your email and we&apos;ll send you a link to reset your password
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
+        <div className='md:p-6'>
+        {/* <div className='bg-[#121212] p-6 border-2 border-white/10 rounded-xl'> */}
+          <div className='py-3'>
+            <h1 className="text-2xl font-bold tracking-tight text-white">Reset Your Password</h1>
+            <p className="text-sm text-gray-400">
+              Type in your email and we&apos;ll send you a link to reset your password.
+            </p>
+          </div>
+          <div>
             <form onSubmit={handleForgotPassword}>
               <div className="flex flex-col gap-6">
                 <div className="grid gap-2">
@@ -77,6 +78,7 @@ export function ForgotPasswordForm({
                     type="email"
                     placeholder="m@example.com"
                     required
+                    className="bg-[#44334A]/20 border-white/10 text-white placeholder:text-gray-600 focus-visible:ring-[#D1C0EC] focus-visible:border-[#D1C0EC] h-12 rounded-xl transition-all"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)} />
                 </div>
@@ -92,8 +94,8 @@ export function ForgotPasswordForm({
                 </Link>
               </div>
             </form>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       )}
     </div>
   );
