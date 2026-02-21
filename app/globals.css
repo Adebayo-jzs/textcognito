@@ -75,7 +75,9 @@
 * {
   font-family: "Outfit", sans-serif;
 }
-
+body {
+  background-color: #1a191b;
+}
 .glass {
   @apply bg-[#1b0e20]/70 backdrop-blur-xl border border-white/5;
 }
