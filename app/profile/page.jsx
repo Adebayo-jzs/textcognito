@@ -9,7 +9,7 @@ export default async function Dashboard() {
 
   // 1. Get current user
   const { data: { user } } = await supabase.auth.getUser();
-  if (!user) redirect('/auth/login');
+  if (!user) redirect('/login');
 
   // 2. Get profile (for the share link)
   const { data: profile } = await supabase

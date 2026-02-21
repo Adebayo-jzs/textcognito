@@ -10,7 +10,7 @@ export default async function ProtectedPage() {
 
   // 2. Redirect if not logged in
   if (error || !user) {
-    redirect('/auth/login')
+    redirect('/login')
   }
 
   // 3. Fetch profile using the user.id we just got
